@@ -1,0 +1,56 @@
+# 성적표 초기화 함수
+def create_gradebook(subjects, grades):
+    return [[subject, grade] for subject, grade in zip(subjects, grades)]
+
+# 과목/성적 추가 함수
+def add_subject(gradebook, subject, score):
+    gradebook.append([subject, score])
+
+# 특정 과목 점수 수정 함수
+def add_bonus(gradebook, subject, bonus):
+    for entry in gradebook:
+        if entry[0] == subject:
+            entry[1] += bonus
+            break
+
+# Pass/Fail 처리 함수
+def convert_to_pass_fail(gradebook, subject):
+    for entry in gradebook:
+        if entry[0] == subject:
+            entry.pop()            # 점수 제거
+            entry.append("Pass")  # Pass 추가
+            break
+
+# 두 성적표 결합 함수
+def merge_gradebooks(gradebook1, gradebook2):
+    return gradebook1 + gradebook2
+
+# 전체 출력 함수
+def print_gradebook(gradebook, title="Gradebook"):
+    print(f"\n {title}")
+    print(gradebook)
+
+
+# 1~2. 과목과 성적
+subjects = ["physics", "calculus", "poetry", "history"]
+grades = [98, 97, 85, 88]
+
+# 3. 성적표 생성
+gradebook = create_gradebook(subjects, grades)
+
+# 5~6. 새 과목 추가
+add_subject(gradebook, "computer science", 100)
+add_subject(gradebook, "visual arts", 93)
+
+# 7. 시각예술 5점 보너스
+add_bonus(gradebook, "visual arts", 5)
+
+# 8~9. poetry를 Pass로 변경
+convert_to_pass_fail(gradebook, "poetry")
+
+# 10. 지난 학기 성적과 합치기
+last_semester_gradebook = [["politics", 80], ["latin", 96], ["dance", 97], ["architecture", 65]]
+full_gradebook = merge_gradebooks(last_semester_gradebook, gradebook)
+
+# 출력
+print_gradebook(full_gradebook, "전체 성적표")
