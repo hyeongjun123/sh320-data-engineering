@@ -1,0 +1,21 @@
+def get_my_chosun_name():
+    # 사용자 입력
+    family_name = input("성을 입력하세요: ")
+    month = int(input("태어난 달(1~12)을 입력하세요: "))
+    day = int(input("태어난 날짜(1~31)을 입력하세요: "))
+    
+    # 월에 해당하는 글자
+    first_name_list = ['쌍', '쇠', '복', '돌', '팽', '육', '쌍', '개', '칠', '갑', '삼', '방']
+    
+    # 일에 해당하는 글자
+    second_name_list = ['봉', '구', '욕', '포', '똥', '삼', '식', '석', '놈', '님',
+                        '년', '돌', '단', '득', '방', '질', '장', '걸', '래', '룡',
+                        '동', '순', '자', '박', '창', '언', '것', '포', '만', '단', '국']
+    
+    # 이름 생성
+    chosun_name = family_name + first_name_list[month - 1] + second_name_list[day - 1]
+    
+    # 결과 출력
+    print(f"당신의 조선시대 이름은 {chosun_name} 입니다.")
+
+get_my_chosun_name()
