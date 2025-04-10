@@ -1,0 +1,18 @@
+# 데이터
+hairstyles = ["bouffant", "pixie", "dreadlocks", "crew", "bowl", "bob", "mohawk", "flattop"]
+prices = [30, 25, 40, 20, 20, 35, 50, 35]
+last_week = [2, 3, 5, 8, 4, 4, 6, 2]
+
+# 30달러 미만 헤어스타일 찾는 함수
+def apply_discount(prices, discount):
+    return [price - discount for price in prices]
+
+def find_cuts_under_price(hairstyles, prices, threshold):
+    return [hairstyle for i, hairstyle in enumerate(hairstyles) if prices[i] < threshold]
+
+# 실행
+new_prices = apply_discount(prices, 5)
+cuts_under_30 = find_cuts_under_price(hairstyles, new_prices, 30)
+
+# 결과 출력
+print(cuts_under_30)
