@@ -1,0 +1,34 @@
+# 제품 카탈로그: [("제품이름", 가격, 설명)]
+catalog = [
+    ("Lovely Loveseat", 254.00, "Lovely Loveseat. Tufted polyester blend on wood. 32 inches high x 40 inches wide x 30 inches deep. Red or white."),
+    ("Stylish Settee", 180.50, "Stylish Settee. Faux leather on birch. 29.50 inches high x 54.75 inches wide x 28 inches deep. Black."),
+    ("Luxurious Lamp", 52.15, "Luxurious Lamp. Glass and iron. 36 inches tall. Brown with cream shade.")
+]
+
+# 세금
+sales_tax = 0.088
+
+# 고객 영수증 계산 함수
+def generate_receipt(purchased_items: list):
+    total = 0
+    itemization = ""
+    for item in purchased_items:
+        for name, price, description in catalog:
+            if name == item:
+                total += price
+                itemization += description
+                break
+    tax = total * sales_tax
+    total += tax
+
+    # 출력
+    print("Customer Items:")
+    print(itemization)
+    print("Customer Total:")
+    print(total)
+
+# 고객 1이 구매한 물품 리스트
+customer_one_items = ["Lovely Loveseat", "Luxurious Lamp"]
+
+# 영수증 생성
+generate_receipt(customer_one_items)
